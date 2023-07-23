@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { forwardRef } from 'react';
 
-const Input = ({ type,className,placeholder }) => {
+const Input = forwardRef(({ type, className, placeholder }, ref) => {
   return (
-    <input type={type} className={className} placeholder={placeholder}/>
-  )
-}
+    <input
+      ref={ref}
+      type={type}
+      className={className}
+      placeholder={placeholder}
+    />
+  );
+});
 
-export default Input
+export default Input;
