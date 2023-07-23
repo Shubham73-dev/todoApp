@@ -7,7 +7,7 @@ import Button from "./Button";
 import Input from "./Input";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { add } from "../redux/list-slice";
+import { add,remove } from "../redux/list-slice";
 
 const ShowCard = () => {
   const dispatch = useDispatch();
@@ -19,6 +19,10 @@ const ShowCard = () => {
     const listValue = inpTxt.current.value;
     dispatch(add(listValue));
     inpTxt.current.value = "";
+  };
+  const removeItem = (index) => {
+    // Dispatch the remove action with the index of the item to remove
+    dispatch(remove(index));
   };
   return (
     <Card sx={{ minWidth: 275 }} className="card">
@@ -49,9 +53,7 @@ const ShowCard = () => {
                     />
                     <span>{value}</span>
                   </div>
-                  <div className="right-col">
-                    {<DeleteForeverIcon />}
-                  </div>
+                  <Button value={<DeleteForeverIcon />} className="right-col" operation={() => removeItem(index)} />
                 </li>
               </>
             ))}
