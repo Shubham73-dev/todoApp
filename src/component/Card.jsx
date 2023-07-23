@@ -20,6 +20,14 @@ const ShowCard = () => {
     dispatch(add(listValue));
     inpTxt.current.value = "";
   };
+  const checkDone = (event)=>{
+    const listname = event.target.nextElementSibling
+    if(event.target.checked){
+      listname.style.textDecoration = 'line-through'
+    }else{
+      listname.style.textDecoration = 'auto'
+    }
+  }
   const removeItem = (index) => {
     // Dispatch the remove action with the index of the item to remove
     dispatch(remove(index));
@@ -48,8 +56,7 @@ const ShowCard = () => {
                   <div className="left-col">
                     <Input
                       type="checkbox"
-                      className="inp-txt"
-                      placeholder="add a todo..."
+                      operation={checkDone}
                     />
                     <span>{value}</span>
                   </div>
