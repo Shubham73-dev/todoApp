@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-const Input = forwardRef(({ type, className, placeholder,operation }, ref) => {
+const Input = forwardRef(({ type, className, placeholder,operation,keyOperation }, ref) => {
   return (
     <input
       ref={ref}
@@ -8,6 +8,7 @@ const Input = forwardRef(({ type, className, placeholder,operation }, ref) => {
       className={className}
       placeholder={placeholder}
       onClick={operation}
+      onKeyPress={keyOperation} 
     />
   );
 });
